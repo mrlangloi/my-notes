@@ -2,10 +2,11 @@ import { it, expect, describe } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import NoteItem from '../../src/components/NoteItem'
 import { NoteProvider } from '../../src/contexts/NoteContext'
+import { Note } from '../../src/types/types'
 
 describe('NoteItem component', () => {
     it('should render the note title and body correctly', () => {
-        const note = {
+        const note: Note = {
             id: '1',
             title: 'Test Note',
             body: 'Test note',
@@ -23,5 +24,9 @@ describe('NoteItem component', () => {
 
         const bodyElement = screen.getByText(note.body)
         expect(bodyElement).toBeInTheDocument()
+
+        const buttonElement = screen.getByRole('button')
+        expect(buttonElement).toBeInTheDocument()
+        expect(buttonElement).toHaveTextContent(/delete/i)
     })
 })
