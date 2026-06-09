@@ -39,3 +39,4 @@ AI was used to design the CSS and to help with debugging TypeScript
 
 # Testing via Vitest
 Testing is added for the sake of learning beyond the scope of this project. Credits to https://www.youtube.com/watch?v=8Xwq35cPwYg for providing a general guide to testing TypeScript React + Vite components
+Enter `npm run test:ui` to run the tests for rendering components
