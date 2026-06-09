@@ -1,13 +1,18 @@
-import NoteList from './components/NoteList'
-import NoteEditor from './components/NoteEditor'
 import './App.css'
+import NoteEditor from './components/NoteEditor'
+import NoteList from './components/NoteList'
+import { NoteProvider } from './contexts/NoteContext'
 
 function App() {
     return (
-        <section id="center">
-            <NoteList />
-            <NoteEditor />
-        </section>
+        <div className="container">
+            <NoteProvider>
+                <section id="center">
+                    <NoteEditor />
+                    <NoteList />
+                </section>
+            </NoteProvider>
+        </div>
     )
 }
 

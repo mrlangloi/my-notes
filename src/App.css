@@ -1,0 +1,6 @@
+.note-item {
+    cursor: "pointer";
+    border: "1px solid #ccc";
+    padding: "1rem";
+    margin: "0.5rem 0";
+}
