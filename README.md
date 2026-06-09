@@ -36,3 +36,6 @@ AI was used to design the CSS and to help with debugging TypeScript
 # Design Decisions
 - React Contexts was used to manage the saving and loading of notes from localStorage
 - Given the requirement `Clicking a note opens it in a modal or navigates to a detail view showing the full title and body. Each note must have a Delete button.`, I made each saved note interactable by expanding/collapsing on click. This allows multiple notes to show full title and body at the same time, rather than one note at a time
+
+# Testing via Vitest
+Testing is added for the sake of learning beyond the scope of this project. Credits to https://www.youtube.com/watch?v=8Xwq35cPwYg for providing a general guide to testing TypeScript React + Vite components
