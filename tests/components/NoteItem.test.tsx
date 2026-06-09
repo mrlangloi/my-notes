@@ -5,6 +5,22 @@ import { NoteProvider } from '../../src/contexts/NoteContext'
 import { Note } from '../../src/types/types'
 
 describe('NoteItem component', () => {
+
+    // helper function to render the NoteItem component with context
+    const renderNoteItem = (note: Note) => {
+        render(
+            <NoteProvider>
+                <NoteItem note={note} />
+            </NoteProvider>
+         )
+        
+        return {
+            titleElement: screen.getByText(note.title),
+            bodyElement: screen.getByText(note.body),
+            deleteButton: screen.getByRole('button', { name: /delete/i })
+        }
+    }
+
     it('should render the note title and body correctly', () => {
         const note: Note = {
             id: '1',
@@ -13,20 +29,11 @@ describe('NoteItem component', () => {
             createdAt: new Date().toISOString()
         }
 
-        render(
-            <NoteProvider>
-                <NoteItem note={note} />
-            </NoteProvider>
-        )
+        const { titleElement, bodyElement, deleteButton } = renderNoteItem(note)
 
-        const titleElement = screen.getByText(note.title)
         expect(titleElement).toBeInTheDocument()
-
-        const bodyElement = screen.getByText(note.body)
         expect(bodyElement).toBeInTheDocument()
-
-        const buttonElement = screen.getByRole('button')
-        expect(buttonElement).toBeInTheDocument()
-        expect(buttonElement).toHaveTextContent(/delete/i)
+        expect(deleteButton).toBeInTheDocument()
+        expect(deleteButton).toHaveTextContent(/delete/i)
     })
 })

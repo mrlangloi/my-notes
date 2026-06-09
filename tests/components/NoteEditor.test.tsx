@@ -5,17 +5,24 @@ import { NoteProvider } from '../../src/contexts/NoteContext'
 
 describe('NoteEditor component', () => {
 
-    it('should render the note editor', () => {
+    // helper function to render the NoteEditor component with context
+    const renderNoteEditor = () => {
         render(
             <NoteProvider>
                 <NoteEditor />
             </NoteProvider>
         )
 
-        const heading = screen.getByRole('heading')
-        const titleInput = screen.getByLabelText(/title/i)
-        const bodyTextarea = screen.getByLabelText(/body/i)
-        const submitButton = screen.getByRole('button')
+        return {
+            heading: screen.getByRole('heading'),
+            titleInput: screen.getByLabelText(/title/i),
+            bodyTextarea: screen.getByLabelText(/body/i),
+            submitButton: screen.getByRole('button')
+        }
+    }
+
+    it('should render the note editor', () => {
+        const { heading, titleInput, bodyTextarea, submitButton } = renderNoteEditor()
 
         expect(heading).toBeInTheDocument()
         expect(heading).toHaveTextContent(/note editor/i)
